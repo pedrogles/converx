@@ -37,7 +37,7 @@ export default function App() {
         setNewBaseCode={setNewBaseCode}
         isoCode={isoCode}
       />
-      <Routers currencys={currencys} coins={coins}/>
+      <Routers baseCode={baseCode} currencys={currencys} coins={coins}/>
     </BrowserRouter>
   )
 };

@@ -1,8 +1,8 @@
 import Currencys from "./currencys/Currencys";
 import Conversion from "./conversion/Conversion";
 
-export function CurrencysPage({ currencys, coins }) {
-    return <Currencys currencys={currencys} coins={coins}  />
+export function CurrencysPage({ baseCode, currencys, coins }) {
+    return <Currencys baseCode={baseCode} currencys={currencys} coins={coins}  />
 };
 
 export function ConversionPage({ data }) {
