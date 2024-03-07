@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 
-import { CurrencysPage, ConversionPage } from "./pages/Index";
+import { CurrencysPage, ConversionPage } from "./pages";
 
-export default function Routers({ baseCode, currencys, coins }) {
+export default function Routers() {
     return (
         <Routes>
             <Route 
                 path="/" 
-                element={ <CurrencysPage baseCode={baseCode} currencys={currencys} coins={coins} /> }
+                element={ <CurrencysPage /> }
             />
             <Route 
                 path="/conversao" 
