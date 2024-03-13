@@ -1,19 +1,20 @@
 import { Routes, Route } from "react-router-dom";
 
-import { CurrencysPage, ConversionPage } from "./pages/index";
+import Conversion from "./pages/conversion/Conversion";
+import Currencys from "./pages/currencys/Currencys";
 
 export default function Routers() {
     return (
         <Routes>
             <Route 
                 path="/" 
-                element={ <CurrencysPage /> }
+                element={ <Currencys /> }
             />
             <Route 
                 path="/conversao" 
-                element={ <ConversionPage />}
+                element={ <Conversion />}
             />
-            <Route path="*" element={ <CurrencysPage/> }/>
+            <Route path="*" element={ <Currencys/> }/>
             {/* Criar página 404 */}
         </Routes>
     )
