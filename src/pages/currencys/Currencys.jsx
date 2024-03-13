@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Loading } from "../../components/loading/Loading";
+import { isosBrl } from "../../utils";
 
 export default function Currencys () {
     // Request result
@@ -44,8 +45,16 @@ export default function Currencys () {
                         type="search" 
                         name="search" 
                         placeholder="Moeda base" 
+                        list="isos"
                         onChange={e => setNewBaseCode(e.target.value)}
                     />
+                    <datalist id="isos">
+                        {isosBrl.map((iso, key) => {
+                            return (
+                                <option key={key} value={iso}>{iso}</option>
+                            )
+                        })}
+                    </datalist>
                 </div>
                 <button 
                     className="text-white bg-blue-900 w-full text-sm py-2 px-6 rounded-md duration-500 hover:bg-blue-800"
