@@ -50,11 +50,11 @@ export default function Conversion () {
         }
     };
     return(
-        <main className="h-screen flex flex-col items-center pt-16 md:pt-24">
+        <main className="flex flex-col items-center py-16 md:py-24">
             <h1 className="text-black text-2xl font-semibold mt-6 md:mt-10 md:text-3xl">Conversor</h1>
-            <div className="flex flex-col mt-12 mb-10 gap-8 justify-center items-center">
+            <div className="flex flex-col w-1/2 mt-12 mb-10 gap-8 justify-center items-center md:w-72 md:gap-10 md:mt-16">
                 {/* First coin */}
-                <label htmlFor="first-coin" className="flex flex-col gap-2 items-start w-full">
+                <label htmlFor="first-coin" className="text-base flex flex-col gap-2 items-start w-full md:text-xl md:gap-4">
                     Conversão de:
                     <select 
                         id="first-coin" 
@@ -68,9 +68,9 @@ export default function Conversion () {
                     </select>
                 </label>
                 {/* Replace coins */}
-                <CgArrowsExchange className="text-xl" onClick={handle_replace_coins} />
+                <CgArrowsExchange className="text-xl cursor-pointer hover:text-blue-800 md:text-2xl" onClick={handle_replace_coins} />
                 {/* Second coin */}
-                <label htmlFor="second-coin" className="flex flex-col gap-2 items-start w-full">
+                <label htmlFor="second-coin" className="text-base flex flex-col gap-2 items-start w-full md:text-xl md:gap-4">
                     Para:
                     <select 
                         id="second-coin" 
@@ -84,18 +84,18 @@ export default function Conversion () {
                     </select>
                 </label>
                 {/* Value */}
-                <label className="flex gap-2 items-center" htmlFor="value">
+                <label className="text-base w-full flex flex-col gap-2 items-start md:text-xl" htmlFor="value">
                     Valor:
                     <input id="value" 
-                        className="border-2 rounded-md p-2 max-w-24"   
-                        type="text" 
+                        className="border-2 border-gray-400 w-full rounded-md p-2 md:px-4"   
+                        type="number" 
                         placeholder="0.00" 
                         onChange={e => setAmount(e.target.value)} 
                     />
                 </label>
             </div>
             {/* Result */}
-            <p className="text-center">Resultado da conversão: <span className="text-red-700">{result?.toFixed(2)}</span></p>
+            <p className="text-base text-center md:text-2xl">Resultado da conversão: <span className="text-base text-red-700 md:text-2xl">{result?.toFixed(2)}</span></p>
         </main>
     )
 }
