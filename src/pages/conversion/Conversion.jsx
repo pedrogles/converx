@@ -95,7 +95,7 @@ export default function Conversion () {
                 </label>
             </div>
             {/* Result */}
-            <p className="text-base text-center md:text-2xl">Resultado da conversão: <span className="text-base text-red-700 md:text-2xl">{result?.toFixed(2)}</span></p>
+            <p className="text-base text-center m-6 md:text-2xl">Resultado da conversão: <span className="text-base text-red-700 md:text-2xl">{result?.toFixed(2)}</span></p>
         </main>
     )
 }
