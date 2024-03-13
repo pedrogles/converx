@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import { CurrencysPage, ConversionPage } from "./pages";
+import { CurrencysPage, ConversionPage } from "./pages/index";
 
 export default function Routers() {
     return (
