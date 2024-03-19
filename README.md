@@ -19,6 +19,9 @@
 - Estilização personalizada e moderna com Tailwind CSS.
 - Ícones de várias bibliotecas disponíveis através do React Icons.
 
+## Pré-requisitos
+Antes de começar, certifique de ter o node.jS e o npm (Node Pack Manager) em seu Sistema Operacional. você pode instalar <a href="https://nodejs.org/en" target="_blank" rel="noopener noreferrer">Site Oficial</a>.
+
 ## Como Executar o Projeto
 
 1. Clone o repositório para a sua máquina local:
@@ -39,15 +42,19 @@
    npm run dev
    ```
     
-4. Abra `http://localhost:5173/` no seu navegador para ver a aplicação.
+4. A seguinte mensagem será exibida no console: 
+
+   ```
+   VITE v4.4.7  ready in 737 ms
+
+   ➜  Local:   http://localhost:5173/
+   ➜  Network: use --host to expose
+   ➜  press h to show help
+   ```
    
-   ```
-    VITE v5.1.4  ready in 516 ms
-  
-    ➜  Local:   http://localhost:5173/
-    ➜  Network: use --host to expose
-    ➜  press h + enter to show help
-   ```
+5. Digite `http://localhost:5173/` no seu navegador para ver a aplicação.
+
+<br>
 
 ## Autor
 | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/76228682?s=400&u=aaf31f62d04947559642f8f8e2d166faf39d5d86&v=4" width=115><br><sub>Pedro Gabriel</sub>](https://github.com/pedrogles) | 
