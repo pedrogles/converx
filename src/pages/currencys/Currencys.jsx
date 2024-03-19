@@ -11,6 +11,8 @@ export default function Currencys () {
     const [newBaseCode, setNewBaseCode] = useState("");
     // Coins {key:value}
     const [coins, setCoins] = useState([]);
+    // Filter Index Coins
+    const [filterIndexCoins, setFilterIndexCoins] = useState(8);
     // IsoCode
     const [isoCode, setIsoCode] = useState([]);
     // API request
@@ -33,6 +35,13 @@ export default function Currencys () {
         } else ( 
             window.alert("Escolha uma moeda válida")
         );
+    };
+    const handle_load_more = () => {
+        const button = document.getElementById("load-more")
+        setFilterIndexCoins(filterIndexCoins + 8);
+        if(filterIndexCoins >= coins.length) {
+            button.innerText = "Chegamos ao fim"
+        }
     };
     return (
         <main className="flex flex-col justify-center items-center pt-16 md:pt-24">
@@ -65,24 +74,27 @@ export default function Currencys () {
             <p className="text-xs text-center font-light px-4 py-2 md:text-base">Valores de acordo com a moeda base definida.</p>
             {
                 currencys ? 
-                <table className="table-auto w-full max-w-md border-separate border-spacing-2 md:max-w-lg">
-                    <thead>
-                        <tr className="bg-black hover:bg-slate-950">
-                            <th className="text-base bg-gray-700 text-white p-3">Código ISO</th>
-                            <th className="text-base bg-gray-700 text-white p-3">Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {coins.map((coin) => {
-                        return (
-                            <tr key={coin[0]}>
-                                <td className="text-base bg-gray-500 text-white p-2 text-center">{coin[0]}</td>
-                                <td className="text-base bg-gray-500 text-white p-2 text-center">{coin[1]}</td>
+                <>
+                    <table className="table-auto w-full max-w-md border-separate border-spacing-2 md:max-w-lg">
+                        <thead>
+                            <tr className="bg-black hover:bg-slate-950">
+                                <th className="text-base bg-gray-700 text-white p-3">Código ISO</th>
+                                <th className="text-base bg-gray-700 text-white p-3">Valor</th>
                             </tr>
-                        )
-                    })}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {coins.slice(0, filterIndexCoins).map((coin) => {
+                            return (
+                                <tr key={coin[0]}>
+                                    <td className="text-base bg-gray-500 text-white p-2 text-center">{coin[0]}</td>
+                                    <td className="text-base bg-gray-500 text-white p-2 text-center">{coin[1]}</td>
+                                </tr>
+                            )
+                        })}
+                        </tbody>
+                    </table>
+                    <button id="load-more" className="text-white bg-blue-900 w-52 text-sm py-3 my-3 rounded-md duration-500 hover:bg-blue-800 md:w-64" onClick={handle_load_more}>Carregar mais...</button>
+                </>
                  : 
                 <Loading />
             }    
