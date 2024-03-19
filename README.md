@@ -10,6 +10,7 @@
 - **Tailwind CSS**: Um framework de CSS de baixo nível que permite a criação de designs personalizados.
 - **React Icons**: Uma biblioteca que fornece uma maneira conveniente de utilizar ícones de várias bibliotecas em projetos React.
 - **React Router Dom**: Biblioteca para o React que resolve problemas de roteamento em aplicações web, tornando o desenvolvimento mais simples e escalável.
+- **Axios**: Cliente HTTP que facilita o envio de requisições e o tratamento de respostas em aplicações JavaScript.
 
 ## Características
 
