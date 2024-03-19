@@ -93,7 +93,7 @@ export default function Currencys () {
                         })}
                         </tbody>
                     </table>
-                    <button id="load-more" className="text-white bg-blue-900 w-52 text-sm py-3 my-3 rounded-md duration-500 hover:bg-blue-800 md:w-64" onClick={handle_load_more}>Carregar mais...</button>
+                    <button id="load-more" className="text-white bg-blue-900 w-52 text-sm py-3 mt-3 mb-12 rounded-md duration-500 hover:bg-blue-800 md:w-64" onClick={handle_load_more}>Carregar mais...</button>
                 </>
                  : 
                 <Loading />
