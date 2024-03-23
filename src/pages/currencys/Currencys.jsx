@@ -19,7 +19,7 @@ export default function Currencys () {
     const [isoCode, setIsoCode] = useState([]);
     // API request
     useEffect(() => {
-        axios.get(`https://v6.exchangerate-api.com/v6/2d51d0608b6946a7b1c805f7/latest/${baseCode}`)
+        axios.get(`https://v6.exchangerate-api.com/v6/0f91c400679168f9cfae10f9/latest/${baseCode}`)
         .then(response => {
         setCurrencys(response.data);
         })

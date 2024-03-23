@@ -16,7 +16,7 @@ export default function Conversion () {
     const [result, setResult] = useState();
     // API Request
     useEffect(() => {
-        axios.get(`https://v6.exchangerate-api.com/v6/2d51d0608b6946a7b1c805f7/pair/${firstCoin}/${secondCoin}/${amount}`)
+        axios.get(`https://v6.exchangerate-api.com/v6/0f91c400679168f9cfae10f9/pair/${firstCoin}/${secondCoin}/${amount}`)
         .then(response => {
         setRequest(response.data);
         })
