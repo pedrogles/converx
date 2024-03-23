@@ -52,13 +52,13 @@ export default function Conversion () {
     return(
         <main className="flex flex-col items-center py-16 md:py-24">
             <h1 className="text-black text-2xl font-semibold mt-6 md:mt-10 md:text-3xl">Conversor</h1>
-            <div className="flex flex-col w-1/2 mt-12 mb-10 gap-8 justify-center items-center md:w-72 md:gap-10 md:mt-16">
+            <div className="flex flex-col w-1/2 mt-12 mb-2 gap-6 justify-center items-center md:w-72 md:gap-10 md:mt-16 md:mb-6 lg:flex-row lg:w-2/3 lg:mb-10">
                 {/* First coin */}
                 <label htmlFor="first-coin" className="text-base flex flex-col gap-2 items-start w-full md:text-xl md:gap-4">
                     Conversão de:
                     <select 
                         id="first-coin" 
-                        className="bg-blue-900 text-white w-full border-2 rounded-md p-2" 
+                        className="bg-blue-900 text-white h-11 w-full border-2 rounded-md p-2 md:h-14" 
                         onChange={handle_change_first_coin}>
                             {isosBrl.map((iso) => {
                                 return (
@@ -68,13 +68,13 @@ export default function Conversion () {
                     </select>
                 </label>
                 {/* Replace coins */}
-                <CgArrowsExchange className="text-xl cursor-pointer hover:text-blue-800 md:text-2xl" onClick={handle_replace_coins} />
+                <CgArrowsExchange className="text-xl cursor-pointer hover:text-blue-800 md:text-2xl lg:text-3xl lg:w-32" onClick={handle_replace_coins} />
                 {/* Second coin */}
                 <label htmlFor="second-coin" className="text-base flex flex-col gap-2 items-start w-full md:text-xl md:gap-4">
                     Para:
                     <select 
                         id="second-coin" 
-                        className="bg-blue-900 text-white w-full border-2 rounded-md p-2" 
+                        className="bg-blue-900 text-white h-11 w-full border-2 rounded-md p-2 md:h-14" 
                         onChange={handle_change_second_coin}>
                             {isosUsd.map((iso) => {
                                 return (
@@ -87,7 +87,7 @@ export default function Conversion () {
                 <label className="text-base w-full flex flex-col gap-2 items-start md:text-xl" htmlFor="value">
                     Valor:
                     <input id="value" 
-                        className="border-2 border-gray-400 w-full rounded-md p-2 md:px-4"   
+                        className="border-2 border-gray-400 h-11 w-full rounded-md p-2 md:px-4 md:h-14"   
                         type="number" 
                         placeholder="0.00" 
                         onChange={e => setAmount(e.target.value)} 
