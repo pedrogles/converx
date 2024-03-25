@@ -41,7 +41,7 @@ export default function Currencys () {
     };
     // Load more coins
     const handle_load_more = () => {
-        const button = document.getElementById("load-more")
+        const button = document.getElementById("load-more-button")
         setFilterIndexCoins(filterIndexCoins + 8);
         if(filterIndexCoins >= coins.length) {
             button.innerText = "Fim da lista"
@@ -50,6 +50,12 @@ export default function Currencys () {
     // Filter currency
     const filteredCoins = coins.filter((coin) => {
         const upperSearch = searchCoin.toUpperCase();
+        const load_more_button = document.getElementById("load-more-button");
+        if(searchCoin != '') {
+            load_more_button.style.display = "none";
+        } else {
+            load_more_button.style.display = "block";
+        }
         return coin[0].includes(upperSearch)
     }, [searchCoin]);
 
@@ -94,32 +100,34 @@ export default function Currencys () {
             </div>
             <p className="text-xs text-center font-light px-4 py-2 md:text-base">Valores de acordo com a moeda base definida.</p>
             {/* Conditiona Rendering: Coins/Loading */}
-            {
-                currencys ? 
-                <>
-                    <table className="table-auto w-full max-w-md border-separate border-spacing-2 md:max-w-lg">
-                        <thead>
-                            <tr className="bg-black hover:bg-slate-950">
-                                <th className="text-base bg-gray-700 text-white p-3">Código ISO</th>
-                                <th className="text-base bg-gray-700 text-white p-3">Valor</th>
+            { currencys ? 
+            <>
+                <table className="table-auto w-full max-w-md border-separate border-spacing-2 md:max-w-lg">
+                    <thead>
+                        <tr className="bg-black hover:bg-slate-950">
+                            <th className="text-base bg-gray-700 text-white p-3">Código ISO</th>
+                            <th className="text-base bg-gray-700 text-white p-3">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {filteredCoins.slice(0, filterIndexCoins).map((coin) => {
+                        return (
+                            <tr key={coin[0]}>
+                                <td className="text-base bg-gray-500 text-white p-2 text-center">{coin[0]}</td>
+                                <td className="text-base bg-gray-500 text-white p-2 text-center">{coin[1]}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                        {filteredCoins.slice(0, filterIndexCoins).map((coin) => {
-                            return (
-                                <tr key={coin[0]}>
-                                    <td className="text-base bg-gray-500 text-white p-2 text-center">{coin[0]}</td>
-                                    <td className="text-base bg-gray-500 text-white p-2 text-center">{coin[1]}</td>
-                                </tr>
-                            )
-                        })}
-                        </tbody>
-                    </table>
-                    <button id="load-more" className="text-white bg-blue-900 w-52 text-sm py-3 mt-3 mb-12 rounded-md duration-500 hover:bg-blue-800 md:w-64" onClick={handle_load_more}>Carregar mais...</button>
-                </>
-                 : 
-                <Loading />
-            }    
+                        )
+                    })}
+                    </tbody>
+                </table>
+                <button 
+                    id="load-more-button" 
+                    className="text-white bg-blue-900 w-52 text-sm py-3 mt-3 mb-12 rounded-md duration-500 hover:bg-blue-800 md:w-64" 
+                    onClick={handle_load_more}>
+                        Carregar mais...
+                </button>
+            </> : 
+            <Loading /> }    
         </main>
     )
 }
