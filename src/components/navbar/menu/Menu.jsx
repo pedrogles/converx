@@ -4,7 +4,7 @@ import { MdCurrencyExchange } from "react-icons/md";
 
 export function Menu({ handle_close_menu }) {
     return (
-        <div id="menu" className="absolute bg-blue-900 w-full flex items-center flex-col gap-12 -z-10 top-0 vh-negative-top duration-700 ease-in-out px-6 pt-8 pb-12 shadow-md md:pt-20 md:pb-20 md:gap-14">
+        <div id="menu" className="absolute bg-[#011526] w-full flex items-center flex-col gap-12 -z-10 top-0 vh-negative-top duration-700 ease-in-out px-6 pt-8 pb-12 shadow-md md:pt-20 md:pb-20 md:gap-14">
             <nav>
                 <ul className="flex flex-col items-center gap-6 md:gap-10">
                     <li>

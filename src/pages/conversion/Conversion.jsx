@@ -1,101 +1,126 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CgArrowsExchange } from "react-icons/cg";
 import { isosBrl, isosUsd } from "../../utils";
+import SelectInput from "../../components/inputs/SelectInput";
+import Input from "../../components/inputs/Input";
 
-export default function Conversion () {
-    // API Request State
-    const [request, setRequest] = useState();
-    // First coin State
-    const [firstCoin, setFirstCoin] = useState("BRL");
-    // Second coin State
-    const [secondCoin, setSecondCoin] = useState("USD");
-    // Conversion value State
-    const [amount, setAmount] = useState(0.00);
-    // Result conversion State
-    const [result, setResult] = useState();
+export default function Conversion() {
+    const [conversionState, setConversionState] = useState({
+        request: undefined,
+        firstCoin: "BRL",
+        secondCoin: "USD",
+        amount: 0.00,
+        result: 0
+    });
+
+    const { request, firstCoin, secondCoin, amount, result } = conversionState;
+
+    const firstCoinRef = useRef();
+    const secondCoinRef = useRef();
+    
     // API Request
     useEffect(() => {
-        axios.get(`https://v6.exchangerate-api.com/v6/0f91c400679168f9cfae10f9/pair/${firstCoin}/${secondCoin}/${amount}`)
-        .then(response => {
-        setRequest(response.data);
-        })
+        if(amount > 0) {
+            axios
+                .get(`https://v6.exchangerate-api.com/v6/0f91c400679168f9cfae10f9/pair/${firstCoin}/${secondCoin}/${amount}`)
+                .then(response => {
+                   setConversionState(prevState => ({...prevState, request: response.data}));
+            })
+        }
     }, [amount, firstCoin, secondCoin]);
+
     // Result conversion validation
     useEffect(() => {
         if(request) {
-        setResult(request.conversion_result)
+            setConversionState(prevState => ({...prevState, result: request.conversion_result}));
         };
     }, [request]);
-    const handle_replace_coins = () => {
-        const first_coin = document.getElementById("first-coin");
-        const second_coin = document.getElementById("second-coin");
-        const first_coin_value = firstCoin;
-        const second_coin_value = secondCoin;
-        first_coin.value = second_coin_value;
-        second_coin.value = first_coin_value;
-        setFirstCoin(second_coin_value);
-        setSecondCoin(first_coin_value);
+
+    const handleReplaceCoins = () => {
+        setConversionState(prevState => ({...prevState, firstCoin: secondCoin, secondCoin: firstCoin}));
+        firstCoinRef.current.value = secondCoin;
+        secondCoinRef.current.value = firstCoin;
+    };
+
+    const handleChangeFirstCoin = () => {
+        if(firstCoinRef.current) {
+            setConversionState(prevState => ({...prevState, firstCoin: firstCoinRef.current.value}));
+        }
+    };
+
+    const handleChangeSecondCoin = () => {
+        if(secondCoinRef.current) {
+            setConversionState(prevState => ({...prevState, secondCoin: secondCoinRef.current.value}));
+        }
+    };
+
+    const handleValue = (e) => {
+        if(e.target.value === "") {
+            setConversionState(prevState => ({...prevState, amount: 0, result: 0}))
+        } else {setConversionState(prevState => ({...prevState, amount: e.target.value}))}
     }
-    const handle_change_first_coin = () => {
-        const first_coin = document.getElementById("first-coin");
-        if(first_coin) {
-            setFirstCoin(first_coin.value);
-        }
-    };
-    const handle_change_second_coin = () => {
-        const second_coin = document.getElementById("second-coin");
-        if(second_coin) {
-            setSecondCoin(second_coin.value)
-        }
-    };
     return(
-        <main className="flex flex-col items-center py-16 md:py-24">
-            <h1 className="text-black text-2xl font-semibold mt-6 md:mt-10 md:text-3xl">Conversor</h1>
-            <div className="flex flex-col w-1/2 mt-12 mb-2 gap-6 justify-center items-center md:w-72 md:gap-10 md:mt-16 md:mb-6 lg:flex-row lg:w-2/3 lg:mb-10">
-                {/* First coin */}
-                <label htmlFor="first-coin" className="text-base flex flex-col gap-2 items-start w-full md:text-xl md:gap-4">
-                    Conversão de:
-                    <select 
-                        id="first-coin" 
-                        className="bg-blue-900 text-white h-11 w-full border-2 rounded-md p-2 md:h-14" 
-                        onChange={handle_change_first_coin}>
-                            {isosBrl.map((iso) => {
-                                return (
-                                    <option key={iso} value={iso}>{iso}</option>
-                                )
-                            })}
-                    </select>
-                </label>
-                {/* Replace coins */}
-                <CgArrowsExchange className="text-xl cursor-pointer hover:text-blue-800 md:text-2xl lg:text-3xl lg:w-32" onClick={handle_replace_coins} />
-                {/* Second coin */}
-                <label htmlFor="second-coin" className="text-base flex flex-col gap-2 items-start w-full md:text-xl md:gap-4">
-                    Para:
-                    <select 
-                        id="second-coin" 
-                        className="bg-blue-900 text-white h-11 w-full border-2 rounded-md p-2 md:h-14" 
-                        onChange={handle_change_second_coin}>
-                            {isosUsd.map((iso) => {
-                                return (
-                                    <option key={iso} value={iso}>{iso}</option>
-                                )
-                            })}
-                    </select>
-                </label>
-                {/* Value */}
-                <label className="text-base w-full flex flex-col gap-2 items-start md:text-xl" htmlFor="value">
-                    Valor:
-                    <input id="value" 
-                        className="border-2 border-gray-400 h-11 w-full rounded-md p-2 md:px-4 md:h-14"   
-                        type="number" 
-                        placeholder="0.00" 
-                        onChange={e => setAmount(e.target.value)} 
+        <main className="h-screen overflow-scroll flex flex-col items-center bg-slate-200 p-4">
+            <div className="flex flex-col justify-center items-center w-full max-w-md my-20 p-12 gap-8 bg-[#011526] rounded-md z-0 md:rounded-sm md:my-32">
+                <h1 className="text-white text-2xl font-semibold md:text-3xl">
+                    Conversor
+                </h1>
+                <div className="flex flex-col items-center gap-3 w-full">
+                    {/* First coin */}
+                    <SelectInput
+                        ref={firstCoinRef}
+                        id="first-coin"
+                        display="flex flex-col gap-2 items-start w-full"
+                        label="Conversão de:"
+                        labelColor="text-white"
+                        selectBgColor="bg-[#012E40]"
+                        selectTextColor="text-white"
+                        borderColor="border-[#012E40]"
+                        data={isosBrl}
+                        onChange={handleChangeFirstCoin}
                     />
-                </label>
+
+                    {/* Replace coins */}
+                    <CgArrowsExchange 
+                        className="rotate-90 text-2xl cursor-pointer text-white mt-4 md:text-2xl lg:text-3xl" 
+                        onClick={handleReplaceCoins} 
+                    />
+
+                    {/* Second coin */}
+                    <SelectInput
+                        ref={secondCoinRef}
+                        id="second-coin"
+                        display="flex flex-col gap-2 items-start w-full"
+                        label="Para:"
+                        labelColor="text-white"
+                        selectBgColor="bg-[#012E40]"
+                        selectTextColor="text-white"
+                        borderColor="border-[#012E40]"
+                        data={isosUsd}
+                        onChange={handleChangeSecondCoin}
+                    />
+
+                    {/* Value */}
+                    <Input 
+                        id="value"
+                        display="flex flex-col gap-2 items-start w-full mt-4"
+                        label="Valor:"
+                        labelColor="text-white"
+                        valueColor="text-black"
+                        placeholder="0.00"
+                        type="number"
+                        onChange={e => handleValue(e)}
+                    />
+                </div>
+                
+                {/* Result */}
+                <p className="flex flex-col bg-[#012E40] rounded-md px-4 py-2 w-full">
+                    <span className="text-base text-center text-white underline md:text-lg">
+                        {`${result?.toFixed(2)} ${secondCoin}`}
+                    </span>
+                </p>
             </div>
-            {/* Result */}
-            <p className="text-base text-center m-6 md:text-2xl">Resultado da conversão: <span className="text-base text-red-700 md:text-2xl">{result?.toFixed(2)}</span></p>
         </main>
     )
 }

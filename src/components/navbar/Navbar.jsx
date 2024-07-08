@@ -24,8 +24,8 @@ export function Navbar() {
     return (
         <>
             {/* Mobile/Tablet */}
-            <header className="fixed w-full h-16 md:h-24 lg:hidden">
-                <div className="bg-blue-900 h-full z-0 flex justify-between items-center">
+            <header className="fixed w-full h-16 md:h-24 lg:hidden z-10">
+                <div className="bg-[#011526] h-full flex justify-between items-center">
                     <h2 className="text-2xl text-white font-extrabold ml-6 md:text-3xl">Converx</h2>
                     <MdMenu id="openIcon" className="text-3xl text-white mr-6 md:text-4xl lg:hidden" onClick={handle_open_menu}/>
                     <MdClose id="closeIcon" className="text-3xl text-white mr-6 md:text-4xl hidden" onClick={handle_close_menu}/>
@@ -33,8 +33,8 @@ export function Navbar() {
                 </div>
             </header>
             {/* Desktop */}
-            <header className="fixed w-full h-24 hidden lg:block">
-                <div className="bg-blue-900 h-full flex justify-between items-center">
+            <header className="fixed w-full h-24 hidden lg:block z-10">
+                <div className="bg-[#011526] h-full flex justify-between items-center">
                     <h2 className="text-3xl text-white font-extrabold ml-10">Converx</h2>
                     <nav>
                         <ul className="flex items-center gap-10 mr-10">
