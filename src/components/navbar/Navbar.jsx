@@ -40,12 +40,12 @@ export function Navbar() {
                         <ul className="flex items-center gap-10 mr-10">
                             <li>
                                 <Link to="/" className="flex items-center gap-2 text-2xl text-white" onClick={handle_close_menu}> 
-                                    <RiCoinsLine className="text-xl" /> Moedas 
+                                    <RiCoinsLine className="text-xl" /> Conversão 
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/conversao" className="flex items-center gap-2 text-2xl text-white" onClick={handle_close_menu}> 
-                                    <MdCurrencyExchange className="text-xl" /> Conversão 
+                                <Link to="/moedas" className="flex items-center gap-2 text-2xl text-white" onClick={handle_close_menu}> 
+                                    <MdCurrencyExchange className="text-xl" /> Moedas 
                                 </Link>
                             </li>
                         </ul>

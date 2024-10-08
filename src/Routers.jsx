@@ -8,13 +8,13 @@ export default function Routers() {
         <Routes>
             <Route 
                 path="/" 
-                element={ <Currencys /> }
+                element={ <Conversion /> }
             />
             <Route 
-                path="/conversao" 
-                element={ <Conversion />}
+                path="/moedas" 
+                element={ <Currencys /> }
             />
-            <Route path="*" element={ <Currencys/> }/>
+            <Route path="*" element={ <Conversion /> }/>
             {/* Criar página 404 */}
         </Routes>
     )

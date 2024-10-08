@@ -9,12 +9,12 @@ export function Menu({ handle_close_menu }) {
                 <ul className="flex flex-col items-center gap-6 md:gap-10">
                     <li>
                         <Link to="/" className="flex items-center gap-2 text-2xl text-white md:text-3xl" onClick={handle_close_menu} > 
-                            <RiCoinsLine className="text-lg md:text-2xl"/> Moedas 
+                            <RiCoinsLine className="text-lg md:text-2xl"/> Conversão 
                         </Link>
                     </li>
                     <li >
-                        <Link to="/conversao" className="flex items-center gap-2 text-2xl text-white md:text-3xl" onClick={handle_close_menu} > 
-                           <MdCurrencyExchange className="text-lg md:text-2xl" /> Conversão 
+                        <Link to="/moedas" className="flex items-center gap-2 text-2xl text-white md:text-3xl" onClick={handle_close_menu} > 
+                           <MdCurrencyExchange className="text-lg md:text-2xl" />  Moedas
                         </Link>
                     </li>
                 </ul>
