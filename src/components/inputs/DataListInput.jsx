@@ -1,4 +1,6 @@
-export default function DataListInput({ id, label, labelColor, type, placeholder, list, onChange, data, display }) {
+import { forwardRef } from "react";
+
+function DataListInput({ id, label, labelColor, type, placeholder, list, onChange, data, display }, ref) {
     return(
         <div className={`${display}`} >
             <label htmlFor={id} className={`text-lg ${labelColor}`}>
@@ -6,6 +8,7 @@ export default function DataListInput({ id, label, labelColor, type, placeholder
             </label>
             <input 
                 className={`w-full border-2 border-gray-400 rounded-md text-md p-2 focus:outline-[#038C65]`}
+                ref={ref}
                 id={id}
                 type={type}
                 placeholder={placeholder} 
@@ -20,5 +23,7 @@ export default function DataListInput({ id, label, labelColor, type, placeholder
                 })}
             </datalist>
         </div>
-    )
-}
+    );
+};
+
+export default forwardRef(DataListInput);

@@ -1,4 +1,6 @@
-export default function Input({ id, label, labelColor, value, valueColor, placeholder, type, onChange, display = "block"}) {
+import { forwardRef } from "react";
+
+function Input({ id, label, labelColor, value, valueColor, placeholder, type, onChange, display = "block"}, ref) {
     return(
        <div className={display}>
             <label htmlFor={id} className={`${labelColor} text-lg`}>
@@ -6,6 +8,7 @@ export default function Input({ id, label, labelColor, value, valueColor, placeh
             </label>
             <input 
                 id={id}
+                ref={ref}
                 className={`${valueColor} w-full border-2 border-gray-400 rounded-md text-md p-2`}   
                 type={type}
                 placeholder={placeholder} 
@@ -13,5 +16,7 @@ export default function Input({ id, label, labelColor, value, valueColor, placeh
                 onChange={onChange} 
             />
        </div>
-    )
-}
+    );
+};
+
+export default forwardRef(Input);
