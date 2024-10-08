@@ -1,65 +1,15 @@
-import axios from "axios";
-import { useEffect, useRef, useState } from "react";
 import { CgArrowsExchange } from "react-icons/cg";
 import { isosBrl, isosUsd } from "../../utils";
 import SelectInput from "../../components/inputs/SelectInput";
 import Input from "../../components/inputs/Input";
+import { useConversion } from "../../hooks/useConversion";
 
 export default function Conversion() {
-    const [conversionState, setConversionState] = useState({
-        request: undefined,
-        firstCoin: "BRL",
-        secondCoin: "USD",
-        amount: 0.00,
-        result: 0
-    });
+    const { conversionState, 
+            firstCoinRef, secondCoinRef, 
+            handleReplaceCoins, handleChangeFirstCoin, handleChangeSecondCoin, handleValue } = useConversion();
 
-    const { request, firstCoin, secondCoin, amount, result } = conversionState;
-
-    const firstCoinRef = useRef();
-    const secondCoinRef = useRef();
-    
-    // API Request
-    useEffect(() => {
-        if(amount > 0) {
-            axios
-                .get(`https://v6.exchangerate-api.com/v6/0f91c400679168f9cfae10f9/pair/${firstCoin}/${secondCoin}/${amount}`)
-                .then(response => {
-                   setConversionState(prevState => ({...prevState, request: response.data}));
-            })
-        }
-    }, [amount, firstCoin, secondCoin]);
-
-    // Result conversion validation
-    useEffect(() => {
-        if(request) {
-            setConversionState(prevState => ({...prevState, result: request.conversion_result}));
-        };
-    }, [request]);
-
-    const handleReplaceCoins = () => {
-        setConversionState(prevState => ({...prevState, firstCoin: secondCoin, secondCoin: firstCoin}));
-        firstCoinRef.current.value = secondCoin;
-        secondCoinRef.current.value = firstCoin;
-    };
-
-    const handleChangeFirstCoin = () => {
-        if(firstCoinRef.current) {
-            setConversionState(prevState => ({...prevState, firstCoin: firstCoinRef.current.value}));
-        }
-    };
-
-    const handleChangeSecondCoin = () => {
-        if(secondCoinRef.current) {
-            setConversionState(prevState => ({...prevState, secondCoin: secondCoinRef.current.value}));
-        }
-    };
-
-    const handleValue = (e) => {
-        if(e.target.value === "") {
-            setConversionState(prevState => ({...prevState, amount: 0, result: 0}))
-        } else {setConversionState(prevState => ({...prevState, amount: e.target.value}))}
-    }
+    const { secondCoin, result } = conversionState;
     return(
         <main className="h-screen overflow-scroll flex flex-col items-center bg-slate-200 p-4">
             <div className="flex flex-col justify-center items-center w-full max-w-md my-20 p-12 gap-8 bg-[#011526] rounded-md z-0 md:rounded-sm md:my-32">
