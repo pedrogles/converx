@@ -1,12 +1,13 @@
+import { AppRoutes } from "./routes/AppRoutes";
 import { BrowserRouter } from "react-router-dom";
-import Routers from "./Routers";
-import { Navbar } from "./components/navbar/Navbar";
+import { PageLayout } from "./layouts/PageLayout";
 
-export default function App() {
+export function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routers />
+      <PageLayout>
+        <AppRoutes />
+      </PageLayout>
     </BrowserRouter>
-  )
+  );
 };

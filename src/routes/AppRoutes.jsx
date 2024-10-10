@@ -1,9 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import { Conversion, Currencys } from "../pages";
 
-import Conversion from "./pages/conversion/Conversion";
-import Currencys from "./pages/currencys/Currencys";
-
-export default function Routers() {
+export function AppRoutes() {
     return (
         <Routes>
             <Route 
@@ -17,5 +15,5 @@ export default function Routers() {
             <Route path="*" element={ <Conversion /> }/>
             {/* Criar página 404 */}
         </Routes>
-    )
-}
+    );
+};
