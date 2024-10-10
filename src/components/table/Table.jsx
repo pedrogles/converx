@@ -1,4 +1,4 @@
-export default function Table({ colums, data, indexToShow, baseCode }) {
+export function Table({ colums, data, indexToShow, baseCode }) {
     return(
         <table className="table-auto w-full max-w-md border-separate border-spacing-2 md:max-w-lg">
             <thead>
