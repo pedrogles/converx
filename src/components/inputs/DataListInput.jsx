@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-function DataListInput({ id, label, labelColor, type, placeholder, list, onChange, data, display }, ref) {
+export const DataListInput = forwardRef(({ id, label, labelColor, type, placeholder, list, onChange, data, display }, ref) => {
     return(
         <div className={`${display}`} >
             <label htmlFor={id} className={`text-lg ${labelColor}`}>
@@ -24,6 +24,4 @@ function DataListInput({ id, label, labelColor, type, placeholder, list, onChang
             </datalist>
         </div>
     );
-};
-
-export default forwardRef(DataListInput);
+});

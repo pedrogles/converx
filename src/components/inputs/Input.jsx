@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-function Input({ id, label, labelColor, value, valueColor, placeholder, type, onChange, display = "block"}, ref) {
+export const Input = forwardRef(({ id, label, labelColor, value, valueColor, placeholder, type, onChange, display = "block"}, ref) => {
     return(
        <div className={display}>
             <label htmlFor={id} className={`${labelColor} text-lg`}>
@@ -17,6 +17,4 @@ function Input({ id, label, labelColor, value, valueColor, placeholder, type, on
             />
        </div>
     );
-};
-
-export default forwardRef(Input);
+});

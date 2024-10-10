@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-function SelectInput({ id, label, labelColor, selectBgColor, selectTextColor, display, data, onChange, value, borderColor }, ref) {
+export const SelectInput = forwardRef(({ id, label, labelColor, selectBgColor, selectTextColor, display, data, onChange, value, borderColor }, ref) => {
     return(
         <div className={display}>
             <label htmlFor={id} className={`${labelColor} text-base md:text-xl md:gap-4`}>
@@ -19,7 +19,5 @@ function SelectInput({ id, label, labelColor, selectBgColor, selectTextColor, di
                     })}
             </select>
         </div>
-    )
-}
-
-export default forwardRef(SelectInput);
+    );
+});
