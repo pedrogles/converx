@@ -17,12 +17,7 @@ export function Converter() {
                 <SelectInput
                     ref={firstCoinRef}
                     id="first-coin"
-                    display="flex flex-col gap-2 items-start w-full"
                     label="Conversão de:"
-                    labelColor="text-white"
-                    selectBgColor="bg-[#012E40]"
-                    selectTextColor="text-white"
-                    borderColor="border-[#012E40]"
                     data={isosBrl}
                     onChange={handleChangeFirstCoin}
                 />
@@ -37,12 +32,7 @@ export function Converter() {
                 <SelectInput
                     ref={secondCoinRef}
                     id="second-coin"
-                    display="flex flex-col gap-2 items-start w-full"
                     label="Para:"
-                    labelColor="text-white"
-                    selectBgColor="bg-[#012E40]"
-                    selectTextColor="text-white"
-                    borderColor="border-[#012E40]"
                     data={isosUsd}
                     onChange={handleChangeSecondCoin}
                 />
