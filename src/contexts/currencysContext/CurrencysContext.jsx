@@ -1,9 +1,11 @@
 import axios from "axios";
 import { createContext, useEffect, useRef, useState } from "react";
+import { enviroments } from "../../../enviroments/enviroments";
 
 export const CurrencysContext = createContext();
 
 export function CurrencysProvider({ children }) {
+    const baseUrl = enviroments.baseUrl;
     const [currencyState, setCurrencyState] = useState({
         currencys: null,
         baseCode: "USD",
@@ -23,7 +25,7 @@ export function CurrencysProvider({ children }) {
     // API request
     useEffect(() => {
         axios
-        .get(`https://v6.exchangerate-api.com/v6/0f91c400679168f9cfae10f9/latest/${baseCode}`)
+        .get(`${baseUrl}/latest/${baseCode}`)
         .then(response => {
         setCurrencyState(prevState => ({...prevState, currencys: response.data}));
         })

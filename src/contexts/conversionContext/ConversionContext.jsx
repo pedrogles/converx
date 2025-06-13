@@ -1,9 +1,11 @@
 import axios from "axios";
 import { createContext, useEffect, useRef, useState } from "react";
+import { enviroments } from "../../../enviroments/enviroments";
 
 export const ConversionContext = createContext();
 
 export function ConversionProvider({ children }) {
+    const baseUrl = enviroments.baseUrl;
     const [conversionState, setConversionState] = useState({
         request: undefined,
         firstCoin: "BRL",
@@ -21,7 +23,7 @@ export function ConversionProvider({ children }) {
     useEffect(() => {
         if(amount > 0) {
             axios
-            .get(`https://v6.exchangerate-api.com/v6/0f91c400679168f9cfae10f9/pair/${firstCoin}/${secondCoin}/${amount}`)
+            .get(`${baseUrl}/pair/${firstCoin}/${secondCoin}/${amount}`)
             .then(response => {
                 setConversionState(prevState => ({...prevState, request: response.data}));
             })
