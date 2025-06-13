@@ -19,11 +19,9 @@ export function BaseCodeSelector () {
                 data={isosBrl}
                 onChange={(e) => handleSetBaseCode(e)}
             />
-            <Button
-                className={"text-sm py-2 px-6 rounded-md duration-500 w-full text-white bg-[#012E40] hover:bg-[#013552]"}
-                text="Alterar"
-                onClick={() => handleChangeBaseCode(newBaseCode)}
-            />
+            <Button className="w-full" onClick={() => handleChangeBaseCode(newBaseCode)}>
+                Alterar
+            </Button>
         </div>
     );
 };
