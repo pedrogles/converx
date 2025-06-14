@@ -1,11 +1,10 @@
 import axios from "axios";
 import { createContext, useEffect, useRef, useState } from "react";
-import { enviroments } from "../../../enviroments/enviroments";
 
 export const CurrencysContext = createContext();
 
 export function CurrencysProvider({ children }) {
-    const baseUrl = enviroments.baseUrl;
+    const baseUrl = import.meta.env.VITE_BASE_URL;
     const [currencyState, setCurrencyState] = useState({
         currencys: null,
         baseCode: "USD",

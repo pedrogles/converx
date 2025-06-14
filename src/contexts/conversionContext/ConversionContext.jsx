@@ -1,11 +1,10 @@
 import axios from "axios";
 import { createContext, useEffect, useRef, useState } from "react";
-import { enviroments } from "../../../enviroments/enviroments";
 
 export const ConversionContext = createContext();
 
 export function ConversionProvider({ children }) {
-    const baseUrl = enviroments.baseUrl;
+    const baseUrl = import.meta.env.VITE_BASE_URL;
     const [conversionState, setConversionState] = useState({
         request: undefined,
         firstCoin: "BRL",
