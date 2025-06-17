@@ -2,7 +2,8 @@
 
 >  Ferramenta prática e eficiente que permite aos usuários converter valores entre diferentes moedas globais.
 
-![screencapture-localhost-5173-2024-03-18-22_02_15](https://github.com/pedrogles/converx/assets/76228682/a6c7f7a6-3b40-40bc-87ad-da45585f8c6e)
+![image](https://github.com/user-attachments/assets/4569bc4b-bbb9-472e-bdf7-4bffd43c9910)
+
 
 ## Tecnologias Utilizadas
 
@@ -11,6 +12,7 @@
 - **React Icons**: Uma biblioteca que fornece uma maneira conveniente de utilizar ícones de várias bibliotecas em projetos React.
 - **React Router Dom**: Biblioteca para o React que resolve problemas de roteamento em aplicações web, tornando o desenvolvimento mais simples e escalável.
 - **Axios**: Cliente HTTP que facilita o envio de requisições e o tratamento de respostas em aplicações JavaScript.
+- **React Hook Form**: Biblioteca leve e eficiente para gerenciamento de formulários em aplicações React, oferecendo validação e performance otimizadas com menos re-renderizações.
 
 ## Características
 
