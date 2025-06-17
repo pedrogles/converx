@@ -1,19 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import { Conversion, Currencys } from "../pages";
+import ConversionPage from "../pages/conversion/ConversionPage";
+import { Suspense } from "react";
+import { LoadingPage } from "../pages/loading/LoadingPage";
 
 export function AppRoutes() {
     return (
-        <Routes>
-            <Route 
-                path="/" 
-                element={ <Conversion /> }
-            />
-            <Route 
-                path="/moedas" 
-                element={ <Currencys /> }
-            />
-            <Route path="*" element={ <Conversion /> }/>
-            {/* Criar página 404 */}
-        </Routes>
+        <Suspense fallback={<LoadingPage />}>
+            <Routes>
+                <Route 
+                    path="/" 
+                    element={ <ConversionPage /> }
+                />
+                <Route path="*" element={ <ConversionPage /> }/>
+                {/* Criar página 404 */}
+            </Routes>
+        </Suspense>
     );
 };
