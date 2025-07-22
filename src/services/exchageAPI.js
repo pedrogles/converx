@@ -7,7 +7,7 @@ export const getPairConversion = (base, target, amount) => {
         .then((response) => {
             const data = response.data;
             return {
-                lastUpdate: data.time_next_update_utc,
+                lastUpdate: data.time_last_update_utc,
                 fromCurrencyCode: data.base_code,
                 toCurrencyCode: data.target_code,
                 conversionRate: data.conversion_rate,
