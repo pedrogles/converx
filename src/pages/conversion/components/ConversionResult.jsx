@@ -2,7 +2,6 @@ import { Typography } from "../../../components"
 import { formatDate } from "../../../utils/formatDate"
 
 export function ConversionResult({ conversionResult }) {
-    console.log(conversionResult)
     return (
         <section className="flex flex-col gap-4 p-8 border-4 border-gray-100">
             <Typography as="h2" className="text-xl md:text-2xl">
