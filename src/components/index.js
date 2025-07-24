@@ -8,3 +8,4 @@ export { Typography } from './ui/typography/Typography';
 export { SelectInput } from './ui/selectInput/SelectInput';
 export { Fieldset } from './ui/fieldset/Fieldset';
 export { ErrorMessage } from './ui/errorMessage/ErrorMessage';
+export { DataListInput } from './ui/dataListInput/DataListInput';
