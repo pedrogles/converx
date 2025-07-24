@@ -8,7 +8,7 @@ export default function ConversionPage() {
     const [conversionResult, setConversionResult] = useState({});
     return(
         <>
-            <Typography as="h2" className="text-2xl md:text-3xl">Conversor de Moedas</Typography>
+            <Typography as="h2" className="text-2xl md:text-3xl text-center">Conversor de Moedas</Typography>
             <div className="flex flex-col">
                 <ConversionForm onConversion={setConversionResult}/>
                 <ConversionResult conversionResult={conversionResult}/>
