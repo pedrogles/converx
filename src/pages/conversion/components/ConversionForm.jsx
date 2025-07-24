@@ -1,4 +1,4 @@
-import { Button, Label, Input, SelectInput, Fieldset, ErrorMessage } from "../../../components";
+import { Button, Label, Input, DataListInput, Fieldset, ErrorMessage } from "../../../components";
 import { CgArrowsExchangeAltV } from "react-icons/cg";
 import { MdCurrencyExchange } from "react-icons/md";
 import { useSupportedCodesContext } from "../hooks/useSupportedCodesContext";
@@ -68,13 +68,16 @@ export function ConversionForm({ onConversion }) {
             </Fieldset>
             <Fieldset>
                 <Label htmlFor="fromCurrencyFullName">Converter de:</Label>
-                <SelectInput 
+                <DataListInput 
                     id="fromCurrencyFullName" 
+                    name="fromCurrencyFullName" 
+                    list="fromCurrenciesList"
                     className="w-full h-10" 
                     placeholder="Selecione uma moeda"
                     data={supportedCodes} 
-                    {...register("fromCurrencyFullName", { required: "Campo Obrigatorio" })}/>
-                {errors.from && <ErrorMessage>{errors.from.message}</ErrorMessage>}
+                    {...register("fromCurrencyFullName", { required: "Campo Obrigatorio" })}
+                />
+                {errors.fromCurrencyFullName && <ErrorMessage>{errors.fromCurrencyFullName.message}</ErrorMessage>}
             </Fieldset>
             <Button 
                 className="flex justify-center items-center h-10 w-full md:mt-9 md:max-w-20" 
@@ -86,13 +89,16 @@ export function ConversionForm({ onConversion }) {
             </Button>
             <Fieldset>
                 <Label htmlFor="toCurrencyFullName">Para:</Label>
-                <SelectInput 
+                <DataListInput 
                     id="toCurrencyFullName" 
+                    name="toCurrencyFullName" 
+                    list="toCurrenciesList"
                     className="w-full h-10" 
                     placeholder="Selecione uma moeda"
                     data={supportedCodes} 
-                    {...register("toCurrencyFullName", { required: "Campo Obrigatorio" })}/>
-                {errors.to && <ErrorMessage>{errors.to.message}</ErrorMessage>}
+                    {...register("toCurrencyFullName", { required: "Campo Obrigatorio" })}
+                />
+                {errors.toCurrencyFullName && <ErrorMessage>{errors.toCurrencyFullName.message}</ErrorMessage>}
             </Fieldset>
             <Button 
                 className="flex justify-center items-center h-10 w-full md:mt-9 md:max-w-20" 
