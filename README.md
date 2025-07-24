@@ -2,7 +2,7 @@
 
 >  Ferramenta prática e eficiente que permite aos usuários converter valores entre diferentes moedas globais.
 
-![image](https://github.com/user-attachments/assets/4569bc4b-bbb9-472e-bdf7-4bffd43c9910)
+<img width="1920" height="1288" alt="screencapture-converxx-vercel-app-2025-07-24-00_23_09" src="https://github.com/user-attachments/assets/3f79fdde-f3f9-43f1-9e6f-2646a6c7babc" />
 
 
 ## Tecnologias Utilizadas
