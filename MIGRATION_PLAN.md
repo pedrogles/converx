@@ -1,6 +1,6 @@
 # Plano de Migração do Converx
 
-Status: **aprovado; Etapa 1 concluída localmente e aguardando autorização de integração**
+Status: **aprovado; Etapa 1 integrada em `dev` e Etapa 2 validada e commitada localmente**
 Data do diagnóstico: **2026-08-06**
 
 Este documento descreve a migração do Converx de React/Vite/JavaScript para Next.js App Router, TypeScript estrito e uma integração segura com o provedor de câmbio. Nenhuma fase de implementação deve começar antes da aprovação do plano e da criação autorizada da branch `dev`.
@@ -20,15 +20,16 @@ Este documento descreve a migração do Converx de React/Vite/JavaScript para Ne
 
 ## 2. Pré-condição de branch
 
-O diagnóstico confirmou que `dev` não existia localmente nem em `origin`. Em 2026-08-06, após aprovação explícita, `dev` foi criada localmente a partir de `main`, e `chore/migration-baseline` foi criada a partir de `dev`.
+O diagnóstico confirmou que `dev` não existia localmente nem em `origin`. Em 2026-08-06, após aprovação explícita, `dev` foi criada a partir de `main`, publicada, recebeu o baseline seguro pelo PR #1 e foi atualizada localmente por fast-forward.
 
 Estado atual:
 
 1. As referências foram atualizadas com `git fetch --prune`.
-2. `main` foi confirmada sem divergência em relação a `origin/main`.
-3. `dev` existe somente localmente.
-4. `chore/migration-baseline` é a branch de trabalho atual.
-5. O push de `dev` ou de qualquer branch continua dependendo de autorização separada.
+2. `main` foi confirmada sem divergência em relação a `origin/main` no início do fluxo.
+3. `dev` existe localmente e no origin em `5319cc3`.
+4. `feature/nextjs-foundation` é a branch de trabalho atual e foi criada a partir da `dev` integrada.
+5. A implementação da Etapa 2 está no commit local `927bc5f`, sem publicação.
+6. Todo commit, push, PR ou merge continua dependendo do checkpoint e da autorização do usuário.
 
 Nenhum commit foi criado durante a preparação das branches.
 
@@ -468,6 +469,7 @@ Quando todas as branches estiverem integradas em `dev`:
 1. Plano e divisão de PRs: aprovado.
 2. Criação local de `dev`: aprovada e concluída.
 3. Versionamento de `AGENTS.md`: aprovado e concluído localmente.
-4. Push de `dev` e da branch de trabalho: pendente de autorização separada.
-5. Abertura e merge de PR: pendentes de autorização separada.
-6. Revogar a credencial legada e preparar uma nova chave para `EXCHANGE_RATE_API_KEY`, sem compartilhá-la em conversa ou commit.
+4. Publicação de `dev` e `chore/migration-baseline`: autorizada e concluída.
+5. Abertura e merge do PR #1 em `dev`: autorizados e concluídos.
+6. Commits locais da Etapa 2: autorizados e concluídos neste checkpoint; push, PR ou merge continuam não executados.
+7. Revogar a credencial legada e preparar uma nova chave para `EXCHANGE_RATE_API_KEY`, sem compartilhá-la em conversa ou commit.
