@@ -1,0 +1,4 @@
+export const MAX_CONVERSION_AMOUNT = 1_000_000_000;
+
+export const DEFAULT_SOURCE_CURRENCY = "BRL";
+export const DEFAULT_TARGET_CURRENCY = "USD";
