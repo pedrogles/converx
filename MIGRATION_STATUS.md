@@ -1,7 +1,7 @@
 # Status da Migração do Converx
 
 Última atualização: **2026-08-06**
-Estado: **Etapa 1 — baseline seguro preparado e validado, sem commit**
+Estado: **Etapa 1 — baseline seguro concluído localmente, aguardando integração autorizada**
 
 ## 1. Escopo executado nesta etapa
 
@@ -16,7 +16,7 @@ Estado: **Etapa 1 — baseline seguro preparado e validado, sem commit**
 
 Durante o diagnóstico inicial, não foram criadas branches, commits, merges, tags ou releases. Nenhum arquivo de aplicação foi alterado.
 
-Após a aprovação do plano, as referências foram atualizadas e as branches locais `dev` e `chore/migration-baseline` foram criadas. Nenhuma branch foi publicada no remoto e nenhum commit foi criado.
+Após a aprovação do plano, as referências foram atualizadas e as branches locais `dev` e `chore/migration-baseline` foram criadas. Os commits locais foram criados após revisão; nenhuma branch foi publicada no remoto.
 
 ## 2. Estado Git e branches
 
@@ -43,7 +43,8 @@ Após a criação dos documentos, ficaram não rastreados: `AGENTS.md`, `MIGRATI
 | Base da branch | `dev` local em `7aa2e22` |
 | Branch `dev` local | Criada a partir de `main` após `git fetch --prune` |
 | Branch `dev` no origin | Continua inexistente |
-| Push, merge ou commit | Não executados |
+| Commits locais | Criados com Conventional Commits após autorização |
+| Push ou merge | Não executados |
 
 ## 3. Diagnóstico de segurança
 
@@ -134,9 +135,9 @@ Resultado: **passou**.
 
 ## 8. Trabalho pendente
 
-1. Revisar o diff e confirmar se `AGENTS.md` deve ser versionado.
-2. Obter autorização antes de criar os commits atômicos do baseline.
-3. Obter autorização separada antes de publicar `dev` ou a branch de trabalho em `origin`.
+1. Obter autorização separada antes de publicar `dev` ou a branch de trabalho em `origin`.
+2. Abrir e integrar o PR do baseline em `dev` somente após autorização.
+3. Criar `feature/nextjs-foundation` a partir de `dev` integrada e atualizada.
 4. Executar as demais fases e os PRs descritos no plano.
 5. Revogar a credencial legada pelo usuário.
 6. Configurar futuramente `EXCHANGE_RATE_API_KEY` e `NEXT_PUBLIC_SITE_URL` na Vercel, somente com autorização.
@@ -144,5 +145,15 @@ Resultado: **passou**.
 ## 9. Bloqueios e aprovações atuais
 
 - A credencial legada deve ser revogada externamente; essa ação não será realizada sem autorização e acesso apropriados.
-- Commits, push, merge, tag e release continuam sem autorização.
+- Push, merge, tag e release continuam sem autorização.
 - O avanço para a próxima branch depende da integração autorizada do baseline em `dev`.
+
+## 10. Commits locais da etapa
+
+```text
+c908158 chore(repo): secure local environment files
+f4bb23d docs(repo): add migration workflow guidelines
+191d173 docs(migration): record migration baseline
+```
+
+Uma atualização documental final registra a conclusão local da etapa sem alterar a aplicação.

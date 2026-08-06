@@ -1,6 +1,6 @@
 # Plano de Migração do Converx
 
-Status: **aprovado; Etapa 1 preparada e aguardando autorização de commit**
+Status: **aprovado; Etapa 1 concluída localmente e aguardando autorização de integração**
 Data do diagnóstico: **2026-08-06**
 
 Este documento descreve a migração do Converx de React/Vite/JavaScript para Next.js App Router, TypeScript estrito e uma integração segura com o provedor de câmbio. Nenhuma fase de implementação deve começar antes da aprovação do plano e da criação autorizada da branch `dev`.
@@ -463,10 +463,11 @@ Quando todas as branches estiverem integradas em `dev`:
 5. Solicitar autorização antes do merge.
 6. Não criar tag ou release sem solicitação explícita.
 
-## 7. Aprovações necessárias antes da implementação
+## 7. Aprovações e ações externas
 
-1. Aprovar este plano e a divisão de PRs.
-2. Autorizar a criação local de `dev` a partir de `main`.
-3. Autorizar separadamente o push de `dev` quando desejado.
-4. Confirmar se `AGENTS.md` deve ser versionado.
-5. Revogar a credencial legada e preparar uma nova chave para `EXCHANGE_RATE_API_KEY`, sem compartilhá-la em conversa ou commit.
+1. Plano e divisão de PRs: aprovado.
+2. Criação local de `dev`: aprovada e concluída.
+3. Versionamento de `AGENTS.md`: aprovado e concluído localmente.
+4. Push de `dev` e da branch de trabalho: pendente de autorização separada.
+5. Abertura e merge de PR: pendentes de autorização separada.
+6. Revogar a credencial legada e preparar uma nova chave para `EXCHANGE_RATE_API_KEY`, sem compartilhá-la em conversa ou commit.
